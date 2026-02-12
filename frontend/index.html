@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel SaaS Planner</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+    <div class="grid-overlay"></div>
+
+    <header class="topbar glass">
+      <div class="brand">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M3 7.5a2.5 2.5 0 012.5-2.5h13A2.5 2.5 0 0121 7.5v9a2.5 2.5 0 01-2.5 2.5h-13A2.5 2.5 0 013 16.5v-9zm2.5-.5a.5.5 0 00-.5.5v1h14v-1a.5.5 0 00-.5-.5h-13zm13.5 3.5H5v6a.5.5 0 00.5.5h13a.5.5 0 00.5-.5v-6z"
+          />
+        </svg>
+        <span>Travel Planner SaaS</span>
+      </div>
+      <div class="tag">MVP • FastAPI</div>
+    </header>
+
+    <main class="layout">
+      <section class="hero">
+        <p class="eyebrow">旅行社内部智能规划工作台</p>
+        <h1>3分钟生成可售卖行程与预算风控建议</h1>
+        <p class="sub">
+          前后端分离架构：FastAPI 负责规划服务，前端独立部署对接 API。支持预算预警与人工接管标记。
+        </p>
+      </section>
+
+      <section class="panel glass">
+        <form id="plan-form" class="form-grid">
+          <label>
+            API Base URL
+            <input id="apiBase" name="apiBase" type="url" placeholder="http://127.0.0.1:8000" required />
+          </label>
+          <label>
+            目的地
+            <input id="destination" name="destination" type="text" placeholder="成都" required />
+          </label>
+          <label>
+            天数
+            <input id="days" name="days" type="number" min="1" max="15" value="3" required />
+          </label>
+          <label>
+            人数
+            <input id="travelers" name="travelers" type="number" min="1" max="20" value="2" required />
+          </label>
+          <label>
+            预算（CNY）
+            <input id="budget" name="budget" type="number" min="1" step="100" value="9000" required />
+          </label>
+          <label class="span-2">
+            偏好（逗号分隔）
+            <input id="preferences" name="preferences" type="text" placeholder="美食,轻松节奏" />
+          </label>
+          <button id="submitBtn" type="submit">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h11.17l-3.59-3.59L14 7l6 6-6 6-1.42-1.41L16.17 14H5z" />
+            </svg>
+            生成规划
+          </button>
+        </form>
+      </section>
+
+      <section id="result" class="panel glass hidden" aria-live="polite"></section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+
